@@ -1,0 +1,253 @@
+body {
+    font-family: 'Comic Neue', cursive;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f5e6e8, #e0f2f7) fixed;
+    overflow: auto;
+    position: relative;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: float 10s infinite;
+    pointer-events: none;
+}
+@keyframes float {
+    0% { transform: translateY(0); opacity: 0.8; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+.container {
+    background: linear-gradient(135deg, #ffe6f2, #e6f3fa); /* Gradient đẹp cho thiệp */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card-content {
+    flex: 2;
+    padding: 0 20px;
+}
+
+.side-image {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.side-image.left {
+    margin-right: 20px;
+}
+
+.side-image.right {
+    margin-left: 20px;
+}
+
+h1 {
+    color: #ff4081;
+    font-size: 28px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+p {
+    color: #333;
+    font-size: 18px;
+}
+
+input {
+    padding: 12px;
+    font-size: 16px;
+    width: 80%;
+    margin: 15px 0;
+    border: 2px solid #ff80ab;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #ff4081;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 18px;
+    background: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+    background: #f50057;
+    transform: scale(1.05);
+}
+
+#card {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffe6f2, #e6f3fa); /* Gradient cho card */
+    border: 3px solid #ffd700;
+    border-radius: 15px;
+    animation: slideIn 0.5s ease-in;
+    position: relative;
+}
+
+#card::before {
+    content: '✨';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+#friendName {
+    color: #ff4081;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#message {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#error {
+    color: #f50057;
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Phần hiển thị ảnh và video chính */
+.photo-gallery {
+    width: 90%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Video trái, ảnh giữa 2 cột, video phải */
+    gap: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.photo-gallery .video-left,
+.photo-gallery .video-right {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 200px;
+}
+
+.photo-gallery .main-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 200px;
+}
+
+.photo-gallery video {
+    background: #000;
+}
+
+/* Phần bổ sung ảnh và video dưới thiệp */
+.extra-gallery {
+    width: 90%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.extra-gallery img,
+.extra-gallery video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 150px;
+}
+
+.extra-gallery video {
+    background: #000;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 10px 0;
+        flex-direction: column;
+        max-width: 90%;
+    }
+    .card-content {
+        padding: 0;
+    }
+    .side-image {
+        width: 80px;
+        margin: 10px 0;
+    }
+    .side-image.left,
+    .side-image.right {
+        margin: 0 auto;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    input, button {
+        width: 90%;
+    }
+    .photo-gallery {
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột trên màn hình nhỏ */
+    }
+    .photo-gallery .video-left,
+    .photo-gallery .video-right,
+    .photo-gallery .main-photo {
+        max-height: 150px;
+    }
+    .extra-gallery {
+        grid-template-columns: 1fr; /* 1 cột trên màn hình nhỏ */
+    }
+    .extra-gallery img,
+    .extra-gallery video {
+        max-height: 120px;
+    }
+}

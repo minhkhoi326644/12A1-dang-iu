@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12A1</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img src="trai.jpg" alt="Left Decoration" class="side-image left">
+        <div class="card-content">
+            <h1>Thiệp Gửi Bạn <3</h1>
+            <p>Nhập Pass để xem thiệp của bạn:</p>
+            <input type="text" id="passkey" placeholder="Nhập pass của bạn">
+            <button onclick="checkPasskey()">Xem Thiệp 💌</button>
+            <p id="error">Pass không đúng! Vui lòng thử lại.</p>
+            <div id="card">
+                <h2 id="friendName"></h2>
+                <p id="message"></p>
+            </div>
+        </div>
+        <img src="z6633864731213_2b24ee0f2030be75e78513dc7d01df4e.jpg"Right Decoration" class="side-image right">
+    </div>
+
+    <div class="photo-gallery">
+        <video controls class="video-left">
+            <source src="23s.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video này.
+        </video>
+        <img src="z6729359560813_3e5933013c94d38f70527270fab001d4.jpg" alt="Main Class Photo" class="main-photo">
+        <video controls class="video-right">
+            <source src="29s.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video này.
+        </video>
+    </div>
+    <div class="extra-gallery">
+        <img src="z6729359565666_a9023790fa1bab3e3d9d1c75406741e6.jpg" alt="Extra Class Photo 1">
+        <video controls>
+            <source src="5p.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video này.
+        </video>
+        <img src="z6729359571811_6eaed72f3909d3985d5b38bc27f11ad3.jpg" alt="Extra Class Photo 2">
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        function createBubble() {
+            const bubble = document.createElement("div");
+            bubble.className = "bubble";
+            bubble.style.width = `${Math.random() * 50 + 20}px`;
+            bubble.style.height = bubble.style.width;
+            bubble.style.left = `${Math.random() * 100}vw`;
+            bubble.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            document.body.appendChild(bubble);
+            setTimeout(() => bubble.remove(), 10000);
+        }
+        setInterval(createBubble, 1000);
+
+        function checkPasskey() {
+            const input = document.getElementById("passkey").value.trim().toLowerCase();
+            const card = document.getElementById("card");
+            const error = document.getElementById("error");
+            const friendName = document.getElementById("friendName");
+            const message = document.getElementById("message");
+
+            const friend = friendsData.find(f => f.passkey === input);
+
+            if (friend) {
+                friendName.textContent = `Gửi ${friend.name},`;
+                message.textContent = friend.message;
+                card.style.display = "block";
+                error.style.display = "none";
+            } else {
+                card.style.display = "none";
+                error.style.display = "block";
+            }
+        }
+
+        document.getElementById("passkey").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPasskey();
+            }
+        });
+    </script>
+</body>
+</html>
