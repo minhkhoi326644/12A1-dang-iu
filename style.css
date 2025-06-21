@@ -25,11 +25,11 @@ body {
 }
 
 .container {
-    background: linear-gradient(135deg, #ffe6f2, #e6f3fa); /* Gradient đẹp cho thiệp */
+    background: linear-gradient(135deg, #ffe6f2, #e6f3fa);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
+    max-width: 900px;
     text-align: center;
     position: relative;
     z-index: 1;
@@ -38,7 +38,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .card-content {
@@ -47,19 +46,19 @@ body {
 }
 
 .side-image {
-    width: 100px;
+    width: 150px;
     height: auto;
     object-fit: cover;
     border-radius: 10px;
-    margin: 0 10px;
+    margin: 0 20px;
 }
 
 .side-image.left {
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 .side-image.right {
-    margin-left: 20px;
+    margin-left: 30px;
 }
 
 h1 {
@@ -109,11 +108,12 @@ button:hover {
     display: none;
     margin-top: 20px;
     padding: 20px;
-    background: linear-gradient(135deg, #ffe6f2, #e6f3fa); /* Gradient cho card */
+    background: linear-gradient(135deg, #ffe6f2, #e6f3fa);
     border: 3px solid #ffd700;
     border-radius: 15px;
     animation: slideIn 0.5s ease-in;
     position: relative;
+    font-family: 'Dancing Script', cursive; /* Font mới cho thiệp */
 }
 
 #card::before {
@@ -132,13 +132,13 @@ button:hover {
 
 #friendName {
     color: #ff4081;
-    font-size: 24px;
+    font-size: 28px; /* Tăng kích thước font cho tên */
     margin-bottom: 10px;
 }
 
 #message {
     color: #333;
-    font-size: 16px;
+    font-size: 20px; /* Tăng kích thước font cho nội dung */
     line-height: 1.5;
 }
 
@@ -154,7 +154,7 @@ button:hover {
     width: 90%;
     margin: 20px auto;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* Video trái, ảnh giữa 2 cột, video phải */
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 10px;
     padding: 15px;
     background: rgba(255, 255, 255, 0.8);
@@ -222,7 +222,7 @@ button:hover {
         padding: 0;
     }
     .side-image {
-        width: 80px;
+        width: 100px;
         margin: 10px 0;
     }
     .side-image.left,
@@ -236,7 +236,7 @@ button:hover {
         width: 90%;
     }
     .photo-gallery {
-        grid-template-columns: 1fr; /* Chuyển thành 1 cột trên màn hình nhỏ */
+        grid-template-columns: 1fr;
     }
     .photo-gallery .video-left,
     .photo-gallery .video-right,
@@ -244,10 +244,29 @@ button:hover {
         max-height: 150px;
     }
     .extra-gallery {
-        grid-template-columns: 1fr; /* 1 cột trên màn hình nhỏ */
+        grid-template-columns: 1fr;
     }
     .extra-gallery img,
     .extra-gallery video {
         max-height: 120px;
     }
+}
+.bubble, .heart {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.8;
+    animation: floatUp 10s linear forwards;
+}
+
+.heart {
+    color: pink;
+    font-size: 20px;
+    animation: floatUp 8s ease-in forwards;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 0.6; }
+    100% { transform: translateY(-80vh); opacity: 0; }
 }

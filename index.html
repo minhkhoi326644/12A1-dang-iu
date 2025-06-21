@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>12A1</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -84,5 +84,40 @@
             }
         });
     </script>
+    <script>
+function createFloatingElement(type) {
+    const el = document.createElement('div');
+    el.classList.add(type);
+
+    // Vị trí ngẫu nhiên theo chiều ngang
+    el.style.left = Math.random() * 100 + 'vw';
+
+    // Kích thước ngẫu nhiên
+    const size = Math.random() * 20 + 10;
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+
+    if (type === 'heart') {
+        el.innerText = '❤';
+        el.style.fontSize = size + 'px';
+    }
+
+    document.body.appendChild(el);
+
+    // Xóa khi kết thúc animation
+    setTimeout(() => {
+        el.remove();
+    }, 10000);
+}
+
+setInterval(() => {
+    if (Math.random() < 0.3) {
+        createFloatingElement('heart');
+    } else if (Math.random() < 0.5) {
+        createFloatingElement('bubble');
+    }
+}, 1500);
+</script>
+
 </body>
 </html>
